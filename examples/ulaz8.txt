@@ -1,0 +1,27 @@
+Vunos{''}
+r{Vunos}
+Vduz{l{Vunos}}
+Vred{0}
+?{Vduz % 2 == 1}<--
+    Vred{(Vduz // 2) + 1}
+-->:{}<--
+    Vred{Vduz // 2}
+-->
+Vispis{''}
+Vdokle{0}
+Vprazno{Vred - 1}
+f{Vi{0->Vred}}<--
+    Vispis{''}
+    f{Vj{0->Vprazno}}<--
+        Vispis{Vispis + ' '}
+    -->
+    Vdokle{Vduz - Vprazno}
+    f{Vj{Vprazno->Vdokle}}<--
+        Vispis{Vispis + Vunos[Vj]}
+    -->
+    f{Vj{0->Vprazno}}<--
+        Vispis{Vispis + ' '}
+    -->
+    Vprazno{Vprazno - 1}
+    ps{Vispis}
+-->

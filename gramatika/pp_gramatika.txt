@@ -1,0 +1,78 @@
+program					: sections
+
+sections 				: library* f_declaration* line_list*
+
+library					: <'u'> LCB <'U'> name LCB name LCB name RCB RCB RCB
+
+f_declaration 			: <'d'> LCB <'F'> name LCB param_list RCB RCB f_body
+
+f_body					: LPB <'--'> line_list <'--'> RPB
+
+param_list				: empty
+						| var (COMMA var)*
+
+var 					: <'V'> name (LSB expr RSB)?
+
+line_list 				: (empty
+						| f_call
+						| var_assignment
+						| if_statement
+						| for_statement
+						| while_statement
+						| BREAK)*
+					
+f_call					: import_function_call 
+						| built_in_function_call
+						| function_call
+						
+arg_list				: (empty 
+						| arg (COMMA arg)*
+						
+arg 					: (empty
+						| expr
+						| bool_expr)
+					
+import_function_call	: <'U'> name DOT name LCB arg_list RCB
+
+built_in_function_call  : ID LCB arg_list RCB
+
+function_call			: <'F'> name LCB arg_list RCB
+					
+var_assignment			: var LCB (expr | bool_expr) RCB
+
+if_statement			: <'?'> LCB bool_expr RCB LPB <'--'> line_list <'--'> RPB else_statement?
+
+else_statement			: <':'> LCB bool_expr? RCB LPB <'--'> line_list <'--'> RPB
+
+for_statement			: <'f'> LCB var LCB expr <'->'> expr RCB RCB LPB <'--'> line_list <'--'> RPB 
+
+while_statement			: <'w'> LCB bool_expr RCB LPB <'--'> line_list <'--'> RPB
+
+value 					: INT
+						| FLOAT
+						| BOOL
+						| STRING
+						| LIST
+						
+expr					: term ((PLUS | MINUS) term)*
+
+term 					: factor ((MUL | NDIV | DIV | MOD) factor)*
+
+factor 					: PLUS factor
+						| MINUS factor
+						| value
+						| LP expr RP
+						| var
+						| f_call
+						
+bool 					: expr ((compare | (unar? logical)) expr))*
+
+bool_expr				: unar? <'('> bool <')'>
+
+compare					: LT | GT | LE | GE | NEQ | EQ
+
+logical					: AND | OR
+
+unar					: NOT
+
+

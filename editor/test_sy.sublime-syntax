@@ -1,0 +1,50 @@
+%YAML 1.2
+---
+name: xst
+file_extensions: [xst]
+scope: source.xst
+
+contexts:
+  main:
+    - match: \b(f|w|r|pi|ps|o|l)\b
+      scope: keywords
+    - match: \b(d|u)\b
+      scope: decimp
+    - match: :|\?
+      scope: ifel
+    - match: "'"
+      push: string
+    - match: -->|<-- 
+      scope: types
+    - match: -> 
+      scope: arrow
+    - match: \bu{U\b
+      scope: sections 
+    - match: \b([0-9]*[.])?[0-9]+\b
+      scope: numbers
+    - match: "\\V[a-z]*"
+      scope: variables
+    - match: "\\.[a-z]*"
+      scope: fcall
+    - match: "\\F[a-z]*"
+      scope: functions
+    - match: "\\U[a-z]*"
+      scope: import
+    - match: "\\*\\*\\*"
+      push: comments
+    - match: "\\*\\*\\*"
+      push: comments
+
+  string:
+    - meta_scope: strings
+    - match: \\.
+      scope: constant.character.escape.app
+    - match: "'"
+      pop: true
+
+  comments:
+  - meta_scope: comments
+  - match: \\.
+    scope: constant.character.escape.app
+  - match: "\\*\\*\\*"
+    pop: true

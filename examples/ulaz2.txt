@@ -1,0 +1,12 @@
+Vn{0}
+Vsuma{0}
+r{Vn}
+w{Vn > 0}<--
+    Vsuma{Vsuma + (Vn % 10)}
+    Vn{Vn // 10}
+-->
+?{Vsuma <= 10}<--
+    ps{'manji'}
+-->:{}<--
+    ps{'veci'}
+-->

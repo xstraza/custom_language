@@ -1,0 +1,27 @@
+Vlista{[]}
+Vunos{0}
+w{1 > 0}<--
+    r{Vunos}
+    ?{Vunos < 0}<--
+        b
+    -->:{}<--
+        Vlista{Vlista + Vunos}
+    -->
+-->
+Vispis{''}
+Vcur{0}
+f{Vi{0->l{Vlista}}}<--
+    Vcur{Vlista[Vi]}
+    f{Vj{1->Vcur}}<--
+        ?{Vj * Vj == Vcur}<--
+            Vispis{Vispis + Vcur}
+            Vispis{Vispis + ','}
+            b
+        -->
+    -->
+-->
+Vispiss{''}
+f{Vi{0->l{Vispis} - 1}}<--
+    Vispiss{Vispiss + Vispis[Vi]}
+-->
+ps{Vispiss}

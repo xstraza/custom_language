@@ -1,0 +1,191 @@
+// prvi zadatak
+	Vvisina{0}
+	r{Vvisina}
+	pi{Vvisina-100}
+	r{Vvisina}
+	pi{Vvisina-120}
+
+// drugi zadatak
+	Vn{0}
+	Vsuma{0}
+	r{Vn}
+	w{Vn > 0}<--
+		Vsuma{Vsuma + (Vn % 10)}
+		Vn{Vn // 10}
+	-->
+	?{Vsuma <= 10}<--
+		ps{'manji'}
+	-->:{}<--
+		ps{'veci'}
+	-->
+	
+// treci zadatak
+	Vunos{0}
+	Vmax{0}
+	r{Vmax}
+	f{Vi{0->3}}<--
+		r{Vunos}
+		?{Vunos > Vmax}<--
+		    Vmax{Vunos}
+		-->
+	-->
+	pi{Vmax}
+	
+// cetvrti zadatak
+	Vn{0}
+	Vsum{0}
+	Vtmp{0}
+	r{Vn}
+	f{Vi{0->Vn}}<--
+		r{Vtmp}
+		Vsum{Vsum + Vtmp}
+	-->
+	Vsum{Vsum / Vn}
+	pi{Vsum}
+	
+// peti zadatak	
+	u{Ur{random{rrange}}}
+	Vn{0}
+	Va{0}
+	r{Vn}
+	f{Vi{0->Vn}}<--
+		Va{Ur.rrange{0,100}}
+		pi{Va}
+	-->
+
+// sesti zadatak
+	Vlista{[]}
+	Vunos{0}
+	w{1 > 0}<--
+		r{Vunos}
+		?{Vunos < 0}<--
+			b
+		-->:{}<--
+			Vlista{Vlista + Vunos}
+		-->
+	-->
+	Vispis{''}
+	Vcur{0}
+	f{Vi{0->l{Vlista}}}<--
+		Vcur{Vlista[Vi]}
+		f{Vj{1->Vcur}}<--
+			?{Vj * Vj == Vcur}<--
+				Vispis{Vispis + Vcur + ','}
+				b
+			-->
+		-->
+	-->
+	Vispiss{''}
+	f{Vi{0->l{Vispis} - 1}}<--
+		Vispiss{Vispiss + Vispis[Vi]}
+	-->
+	ps{Vispiss}
+
+// sedmi zadatak
+	u{Us{string{isa}}}
+	u{Us{string{isn}}}
+	Vunos{''}
+	r{Vunos}
+	Vispis{''}
+	Vispis{Vispis + Vunos[0]}
+	f{Vi{1->l{Vunos}}}<--
+        Vaa{Us.isa{Vunos[Vi-1]}}
+        Vnn{Us.isn{Vunos[Vi]}}
+        ?{Vaa && Vnn}<--
+            Vispis{Vispis + '*'}
+        -->
+        Vaa{Us.isn{Vunos[Vi-1]}}
+        Vnn{Us.isa{Vunos[Vi]}}
+        ?{Vaa && Vnn}<--
+            Vispis{Vispis + '#'}
+        -->
+        Vispis{Vispis + Vunos[Vi]}
+	-->
+	ps{Vispis}
+
+// osmi zadatak
+	Vunos{''}
+	r{Vunos}
+	Vduz{l{Vunos}}
+	Vred{0}
+	?{Vduz % 2 == 1}<--
+		Vred{(Vduz // 2) + 1}
+	-->:{}<--
+		Vred{Vduz // 2}
+	-->
+	Vispis{''}
+	Vdokle{0}
+	Vprazno{Vred - 1}
+	f{Vi{0->Vred}}<--
+		Vispis{''}
+		f{Vj{0->Vprazno}}<--
+			Vispis{Vispis + ' '}
+		-->
+		Vdokle{Vduz - Vprazno}
+		f{Vj{Vprazno->Vdokle}}<--
+			Vispis{Vispis + Vunos[Vj]}
+		-->
+		f{Vj{0->Vprazno}}<--
+			Vispis{Vispis + ' '}
+		-->
+		Vprazno{Vprazno - 1}
+		ps{Vispis}
+	-->
+	
+// deveti zadatak
+	u{Us{string{splt}}}
+	u{Us{string{isa}}}
+	u{Us{string{up}}}
+	Vunos{''}
+	r{Vunos}
+	Vn{0}
+	r{Vn}
+	Vunos{Us.splt{Vunos}}
+	Vduz{l{Vunos}}
+	Vrec{''}
+	Vispis{''}
+	f{Vi{0->Vduz}}<--
+		Vrec{Vunos[Vi]}
+		Vduzz{l{Vrec}}
+		?{!(Us.isa{Vrec[Vduzz - 1] == TRU})}<--
+			Vduzz{Vduzz - 1}
+		-->
+		?{Vduzz > Vn}<--
+			Vrec{Us.up{Vrec}}
+		-->
+		Vispis{Vispis + Vrec + ' '}
+	-->
+	ps{Vispis}
+	
+// deseti zadatak
+	u{Us{string{splt}}}
+	u{Uf{file{rt}}}
+	Vputanja{''}
+	r{Vputanja}
+	Vn{0}
+	r{Vn}
+	Vlista{[]}
+	Vx{''}
+	f{Vi{0->Vn}}<--
+		r{Vx}
+		Vlista{Vlista + Vx}
+	-->
+	Vtekst{Uf.rt{Vputanja}}
+	Vtekst{Us.splt{Vtekst}}
+	Vduz{l{Vtekst}}
+	Vcnt{0}
+	f{Vi{0->Vduz}}<--
+		f{Vj{0->Vn}}<--
+			?{Vtekst[Vi] == Vlista[Vj]}<--
+				Vcnt{Vcnt + 1}
+			-->
+		-->
+	-->
+	pi{Vcnt}
+	
+
+// definisanje funkcije
+d{Ffunkcija{Va, Vb, Vc}}<--
+	Vzbir{Va + Vb + Vc}
+	o{Vzbir} //return 
+-->

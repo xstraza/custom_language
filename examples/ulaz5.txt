@@ -1,0 +1,8 @@
+u{Ur{random{rrange}}}
+Vn{0}
+Va{0}
+r{Vn}
+f{Vi{0->Vn}}<--
+    Va{Ur.rrange{0,100}}
+    pi{Va}
+-->

@@ -1,0 +1,10 @@
+Vunos{0}
+Vmax{0}
+r{Vmax}
+f{Vi{0->3}}<--
+    r{Vunos}
+    ?{Vunos > Vmax}<--
+        Vmax{Vunos}
+    -->
+-->
+pi{Vmax}

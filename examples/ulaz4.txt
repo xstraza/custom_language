@@ -1,0 +1,10 @@
+Vn{0}
+Vsum{0}
+Vtmp{0}
+r{Vn}
+f{Vi{0->Vn}}<--
+    r{Vtmp}
+    Vsum{Vsum + Vtmp}
+-->
+Vsum{Vsum / Vn}
+pi{Vsum}

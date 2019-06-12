@@ -1,0 +1,25 @@
+u{Us{string{splt}}}
+u{Us{string{isa}}}
+u{Us{string{up}}}
+Vunos{''}
+r{Vunos}
+Vn{0}
+r{Vn}
+Vunos{Us.splt{Vunos}}
+Vduz{l{Vunos}}
+Vrec{''}
+Vispis{''}
+f{Vi{0->Vduz}}<--
+    Vrec{Vunos[Vi]}
+    Vduzz{l{Vrec}}
+    Va{Us.isa{Vrec[Vduzz - 1]}}
+    Vb{TRU}
+    ?{Va == Vb}<--
+        Vduzz{Vduzz - 1}
+    -->
+    ?{Vduzz > Vn}<--
+        Vrec{Us.up{Vrec}}
+    -->
+    Vispis{Vispis + Vrec + ' '}
+-->
+ps{Vispis}

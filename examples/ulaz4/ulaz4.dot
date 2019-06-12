@@ -1,0 +1,37 @@
+
+digraph astgraph {
+    node [shape=box, fontsize=12, fontname="Courier", height=.1];
+    ranksep=.3;   
+    edge [arrowsize=.5]
+node1 [label="Program"]
+node2 [label="VarAssignment"]
+node3 [label="Var: Vvisina"]
+node2 -> node3
+node4 [label="Val Type: INTEGER, Value: 0"]
+node2 -> node4
+node1 -> node2
+node5 [label="Function call: READ"
+]node6 [label="Var: Vvisina"]
+node5 -> node6
+node1 -> node5
+node7 [label="Function call: PRINT_INT"
+]node8 [label="<MINUS ->"]
+node9 [label="Var: Vvisina"]
+node8 -> node9
+node10 [label="Val Type: INTEGER, Value: 100"]
+node8 -> node10
+node7 -> node8
+node1 -> node7
+node11 [label="Function call: READ"
+]node12 [label="Var: Vvisina"]
+node11 -> node12
+node1 -> node11
+node13 [label="Function call: PRINT_INT"
+]node14 [label="<MINUS ->"]
+node15 [label="Var: Vvisina"]
+node14 -> node15
+node16 [label="Val Type: INTEGER, Value: 120"]
+node14 -> node16
+node13 -> node14
+node1 -> node13
+}

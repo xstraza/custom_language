@@ -1,0 +1,20 @@
+u{Us{string{isa}}}
+u{Us{string{isn}}}
+Vunos{''}
+r{Vunos}
+Vispis{''}
+Vispis{Vispis + Vunos[0]}
+f{Vi{1->l{Vunos}}}<--
+    Vaa{Us.isa{Vunos[Vi-1]}}
+    Vnn{Us.isn{Vunos[Vi]}}
+    ?{Vaa && Vnn}<--
+        Vispis{Vispis + '*'}
+    -->
+    Vaa{Us.isn{Vunos[Vi-1]}}
+    Vnn{Us.isa{Vunos[Vi]}}
+    ?{Vaa && Vnn}<--
+        Vispis{Vispis + '#'}
+    -->
+    Vispis{Vispis + Vunos[Vi]}
+-->
+ps{Vispis}

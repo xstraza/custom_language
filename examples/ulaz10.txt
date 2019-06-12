@@ -1,0 +1,24 @@
+u{Us{string{splt}}}
+u{Uf{file{rt}}}
+Vputanja{''}
+r{Vputanja}
+Vn{0}
+r{Vn}
+Vlista{[]}
+Vx{''}
+f{Vi{0->Vn}}<--
+    r{Vx}
+    Vlista{Vlista + Vx}
+-->
+Vtekst{Uf.rt{Vputanja}}
+Vtekst{Us.splt{Vtekst}}
+Vduz{l{Vtekst}}
+Vcnt{0}
+f{Vi{0->Vduz}}<--
+    f{Vj{0->Vn}}<--
+        ?{Vtekst[Vi] == Vlista[Vj]}<--
+            Vcnt{Vcnt + 1}
+        -->
+    -->
+-->
+pi{Vcnt}
